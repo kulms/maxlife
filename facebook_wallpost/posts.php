@@ -382,21 +382,49 @@
             $findme  = 'www.youtube.com';
             
             $pos = strpos($row['post'], $findme);
-                        
-            if ($pos === false) {
-            ?>
-            
-            <?
-            } else {
-				?>
-            <div id="stexpandbox">
-                <div id="stexpand6">
-                <object width="400" height="250"><param name="movie" value="<? echo $row['post'];?>"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="<? echo $row['post'];?>" type="application/x-shockwave-flash" width="400" height="250" allowscriptaccess="always" allowfullscreen="true"></object>
-               </div>
-           </div>    
-                <?
+						
+			$video_name  = $row['post'];
+			
+			$find_value = 'v=';
+			$pos_value = strpos($row['post'], $find_value);
+			if ($pos_value === false) {
+				$video_url = $video_name;
+			}else{
+				$video_value = substr(strstr($video_name, 'v='),2);
+				//echo $video_value."<br>";
+				$video_url = "https://www.youtube.com/v/".$video_value."?version=3&autoplay=0";
+				//echo $video_url;
 			}
-            
+			
+			
+			
+			if ($pos === false) {
+			?>
+			
+			<?
+			} else {
+				?>
+			<div id="stexpandbox">
+				<div id="stexpand6">                            
+				<!--
+				<object width="400" height="250"><param name="movie" value="<? echo $video_url;?>"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="<? echo $video_url;?>" type="application/x-shockwave-flash" width="400" height="250" allowscriptaccess="always" allowfullscreen="true"></object>
+				-->
+				<object width="400" height="250">
+				  <param name="movie"
+						 value="<? echo $video_url;?>"></param>
+				  <param name="allowScriptAccess" value="always"></param>
+				  <param name="allowfullscreen" value="true"></param>
+				  <embed src="<? echo $video_url;?>"
+						 type="application/x-shockwave-flash"
+						 allowscriptaccess="always"
+						 allowfullscreen="true"
+						 width="400" height="250"></embed>
+				</object>				
+			   </div>                           
+		   </div>    
+				<?
+			}
+			
 			?>
            
            
@@ -595,7 +623,7 @@
 						}else{
 							$video_value = substr(strstr($video_name, 'v='),2);
 							//echo $video_value."<br>";
-							$video_url = "http://www.youtube.com/v/".$video_value."?version=3";
+							$video_url = "https://www.youtube.com/v/".$video_value."?version=3&autoplay=0";
 							//echo $video_url;
 						}
 						
@@ -608,9 +636,23 @@
 						} else {
 							?>
 						<div id="stexpandbox">
-							<div id="stexpand6">
+							<div id="stexpand6">                            
+                            <!--
 							<object width="400" height="250"><param name="movie" value="<? echo $video_url;?>"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="<? echo $video_url;?>" type="application/x-shockwave-flash" width="400" height="250" allowscriptaccess="always" allowfullscreen="true"></object>
-						   </div>
+                            -->
+                            <object width="400" height="250">
+                              <param name="movie"
+                                     value="<? echo $video_url;?>"></param>
+                              <param name="allowScriptAccess" value="always"></param>
+                              <param name="allowfullscreen" value="true"></param>
+                              <embed src="<? echo $video_url;?>"
+                                     type="application/x-shockwave-flash"
+                                     allowscriptaccess="always"
+                                     allowfullscreen="true"
+                                     width="400" height="250"></embed>
+                            </object>
+                            
+						   </div>                           
 					   </div>    
 							<?
 						}
