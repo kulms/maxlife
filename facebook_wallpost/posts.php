@@ -65,7 +65,8 @@
 			} else {
 				//$imageUser = '../files/preference/'.$user_id.'/'.$upicture;
 				//$imageUser = 'https://course.ku.ac.th/lms/files/preference/'.$user_id.'/'.$upicture;
-				$imageUser = 'https://'.$_SERVER['SERVER_ADDR'].'/preference/'.$user_id.'/'.$upicture;
+				//$imageUser = 'https://'.$_SERVER['SERVER_ADDR'].'/preference/'.$user_id.'/'.$upicture;
+				$imageUser = 'https://course.ku.ac.th/preference/'.$user_id.'/'.$upicture;
 			}
 
 			
